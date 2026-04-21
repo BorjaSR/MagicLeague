@@ -1,8 +1,6 @@
 package es.bsalazar.magicleague.ui.league
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import es.bsalazar.magicleague.data.Firestore
 import es.bsalazar.magicleague.models.League
