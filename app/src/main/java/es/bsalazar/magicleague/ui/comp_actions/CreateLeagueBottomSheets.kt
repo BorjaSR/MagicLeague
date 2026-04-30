@@ -28,6 +28,7 @@ import es.bsalazar.magicleague.R
 import es.bsalazar.magicleague.models.League
 import es.bsalazar.magicleague.ui.components.LoadingCircular
 import es.bsalazar.magicleague.ui.components.MagicLeaguePrimaryButton
+import es.bsalazar.magicleague.ui.components.MagicSeparator
 import es.bsalazar.magicleague.ui.components.SelectDeck
 import es.bsalazar.magicleague.ui.theme.MagicLeagueTheme
 import es.bsalazar.magicleague.utils.Constants
@@ -83,20 +84,8 @@ fun CreateLeagueBottomSheet(
                             leagueName = it
                             isValidLeagueName = it.length >= 4
                         })
-                    Spacer(modifier = Modifier.height(20.dp))
-                    Box(
-                        modifier = Modifier
-                            .height(1.dp)
-                            .background(
-                                brush = Brush.horizontalGradient(
-                                    colors = listOf(
-                                        MaterialTheme.colorScheme.primary,
-                                        MaterialTheme.colorScheme.secondary,
-                                        MaterialTheme.colorScheme.primary
-                                    )
-                                )
-                            )
-                    )
+                    Spacer(modifier = Modifier.height(30.dp))
+                    MagicSeparator(enable = isValidLeagueName)
                     Spacer(modifier = Modifier.height(20.dp))
 
                     SelectDeck(enable = isValidLeagueName) { selectedDeck ->

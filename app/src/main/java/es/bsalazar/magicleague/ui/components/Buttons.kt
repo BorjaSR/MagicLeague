@@ -1,5 +1,7 @@
 package es.bsalazar.magicleague.ui.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.layout.Column
@@ -13,7 +15,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,7 +28,9 @@ import androidx.compose.ui.graphics.Brush
 @Composable
 fun MagicLeaguePrimaryButtonPreview() {
     MagicLeagueTheme {
-        Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)) {
             val enabled = true
             MagicLeaguePrimaryButton(
                 text = "Boton Primario",
@@ -52,7 +55,9 @@ fun MagicLeaguePrimaryButton(
     shape: Shape = ButtonDefaults.shape
 ) {
     Button(
-        modifier = modifier.fillMaxWidth().height(50.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .height(50.dp),
         enabled = enabled,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
@@ -81,7 +86,9 @@ fun MagicLeagueSecondaryButton(
     text: String,
 ) {
     OutlinedButton (
-        modifier = modifier.fillMaxWidth().height(50.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .height(50.dp),
         enabled = enabled,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.background,
@@ -110,5 +117,27 @@ fun MagicLeagueSecondaryButton(
                 color =  if(enabled) textColor else MaterialTheme.colorScheme.inversePrimary
             )
         }
+    )
+}
+
+@Composable
+fun MagicSeparator(enable: Boolean) {
+    Box(
+        modifier = Modifier
+            .height(1.dp)
+            .fillMaxWidth()
+            .background(
+                brush = Brush.horizontalGradient(
+                    colors = if(enable) listOf(
+                        MaterialTheme.colorScheme.primary,
+                        MaterialTheme.colorScheme.secondary,
+                        MaterialTheme.colorScheme.primary
+                    )
+                    else listOf(
+                        MaterialTheme.colorScheme.inversePrimary,
+                        MaterialTheme.colorScheme.inversePrimary
+                    )
+                )
+            )
     )
 }

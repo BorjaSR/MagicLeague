@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import es.bsalazar.magicleague.R
 import es.bsalazar.magicleague.ui.components.LoadingCircular
 import es.bsalazar.magicleague.ui.components.MagicLeaguePrimaryButton
+import es.bsalazar.magicleague.ui.components.MagicSeparator
 import es.bsalazar.magicleague.ui.components.SelectDeck
 import es.bsalazar.magicleague.ui.theme.MagicLeagueTheme
 import es.bsalazar.magicleague.utils.Constants
@@ -85,20 +86,8 @@ fun JoinLeagueBottomSheet(
                                 leagueCode = it
                                 isValidLeagueCode = it.length >= 18
                             }
-                            Spacer(modifier = Modifier.height(20.dp))
-                            Box(
-                                modifier = Modifier
-                                    .height(1.dp)
-                                    .background(
-                                        brush = Brush.horizontalGradient(
-                                            colors = listOf(
-                                                MaterialTheme.colorScheme.primary,
-                                                MaterialTheme.colorScheme.secondary,
-                                                MaterialTheme.colorScheme.primary
-                                            )
-                                        )
-                                    )
-                            )
+                            Spacer(modifier = Modifier.height(30.dp))
+                            MagicSeparator(enable = isValidLeagueCode)
                             Spacer(modifier = Modifier.height(20.dp))
 
                             SelectDeck(enable = isValidLeagueCode) { selectedDeck ->
@@ -156,8 +145,8 @@ fun JoinLeagueName(
             onLeagueCodeChange(it)
         },
         trailingIcon = {
-            val clipData = (clipboardManager.nativeClipboard.primaryClip as ClipData)
-            if (clipData.itemCount > 0) {
+            val clipData = clipboardManager.nativeClipboard.primaryClip
+            if (clipData != null && clipData.itemCount > 0) {
                 Icon(
                     modifier = Modifier.clickable {
                         onLeagueCodeChange(clipData.getItemAt(0).text.toString())

@@ -58,7 +58,7 @@ fun createBrushForDeckList(
         myEndOffset = 0f
     }
 
-    val colorStops = ((1f - myStartOffset - myEndOffset) / (finalColors.size - 1)).roundOffDecimal()
+    val colorStops = (1f - myStartOffset - myEndOffset) / (finalColors.size - 1)
     var actualStop = myStartOffset
     finalColors.forEachIndexed { index, color ->
         finalColorStops.add(
