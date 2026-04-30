@@ -41,4 +41,5 @@
     <string name="league_finded">¡Hemos encontrado la liga!</string>
     <string name="choose_deck_description">Elige el mazo con el que vas a jugar esta liga</string>
     <string name="search_league_button">Buscar liga</string>
+    <string name="creating_league">Creando liga...\n</string>
 </resources>

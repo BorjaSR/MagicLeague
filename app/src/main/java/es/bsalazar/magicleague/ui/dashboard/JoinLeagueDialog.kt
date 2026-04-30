@@ -87,11 +87,11 @@ class JoinLeagueDialog(val onClickJoin: (String) -> Unit) : DialogFragment() {
 
         view.findViewById<LinearLayout>(R.id.search_league_button).setOnClickListener {
             changeToLoading()
-//            onClickJoin(view.findViewById<EditText>(R.id.et_league_code).text.toString())
         }
 
         view.findViewById<LinearLayout>(R.id.join_league_button).setOnClickListener {
             dismiss()
+            onClickJoin(view.findViewById<EditText>(R.id.et_league_code).text.toString())
         }
     }
 

@@ -1,15 +1,14 @@
 package es.bsalazar.magicleague.ui.league.clasification
 
 import android.content.Context
-import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import es.bsalazar.magicleague.R
 import es.bsalazar.magicleague.models.PlayerLeague
+import es.bsalazar.magicleague.utils.GradientHelper
 
 
 class LeagueTableAdapter(private val players: List<PlayerLeague>) :
@@ -33,22 +32,15 @@ class LeagueTableAdapter(private val players: List<PlayerLeague>) :
     override fun onBindViewHolder(holder: LeagueTableViewHolder, position: Int) {
         val player = players[position]
         with(holder) {
-//            GradientDrawable(
-//                GradientDrawable.Orientation.LEFT_RIGHT, intArrayOf(
-//                    ContextCompat.getColor(context, R.color.mtg_white),
-//                    ContextCompat.getColor(context, R.color.mtg_white),
-//                    ContextCompat.getColor(context, R.color.mtg_red),
-//                    ContextCompat.getColor(context, R.color.mtg_red),
-//                    ContextCompat.getColor(context, R.color.transucent)
-//                )
-//            )
 
-            playerName.text = player.Name
-            playerPoints.text = player.Points.toString()
-            playerWins.text = player.Wins.toString()
-            playerDefeats.text = player.Defeats.toString()
-            playerTies.text = player.Ties.toString()
-            playerLifeGap.text = player.LifeGap.toString()
+            background.background = GradientHelper(context).createGradientForDeckList(player.colors)
+
+            playerName.text = player.name
+            playerPoints.text = player.points.toString()
+            playerWins.text = player.wins.toString()
+            playerDefeats.text = player.defeats.toString()
+            playerTies.text = player.ties.toString()
+            playerLifeGap.text = player.lifeGap.toString()
         }
     }
 }

@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.bsalazar.magicleague">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".MagicLeagueApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -30,6 +33,10 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.MagicLeague.NoActionBar" />
+        <activity
+            android:name=".MainActivityCompose"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MagicLeague"/>
     </application>
 
 </manifest>

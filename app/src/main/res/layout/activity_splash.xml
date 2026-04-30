@@ -47,4 +47,13 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/orange_700"
         android:text="@string/st_continue" />
+
+    <Button
+        android:id="@+id/continue_compose_button"
+        android:layout_marginTop="40dp"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/orange_700"
+        android:text="Continuar en Compose" />
 </LinearLayout>

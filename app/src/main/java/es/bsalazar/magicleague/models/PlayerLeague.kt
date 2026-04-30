@@ -4,11 +4,11 @@ import es.bsalazar.magicleague.utils.Constants
 
 data class PlayerLeague(
     var id : String = "",
-    var Name : String = "",
-    var Points: Int = 0,
-    var Wins: Int = 0,
-    var Defeats: Int = 0,
-    var Ties: Int = 0,
-    var LifeGap: Int = 0,
+    var name : String = "",
+    var points: Int = 0,
+    var wins: Int = 0,
+    var defeats: Int = 0,
+    var ties: Int = 0,
+    var lifeGap: Int = 0,
     var colors: ArrayList<Constants.MTG_COLOR> = arrayListOf()
 )

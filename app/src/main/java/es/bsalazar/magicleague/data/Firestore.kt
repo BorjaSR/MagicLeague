@@ -1,8 +1,10 @@
 package es.bsalazar.magicleague.data
 
 import com.google.android.gms.tasks.Task
+import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
 import es.bsalazar.magicleague.models.League
 import es.bsalazar.magicleague.models.Match
 import es.bsalazar.magicleague.models.PlayerLeague
@@ -12,7 +14,7 @@ class Firestore {
 
     private val LEAGUES_COLLECTION = "Leagues"
 
-    private val db get() = FirebaseFirestore.getInstance()
+    private val db get() = Firebase.firestore
 
     companion object {
         val instance: Firestore by lazy { return@lazy Firestore() }
@@ -36,11 +38,11 @@ class Firestore {
             .whereArrayContains("players", userID)
             .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 if (querySnapshot != null) {
-                    success(querySnapshot.documents.map {
+                    success(querySnapshot.documents.mapNotNull {
                         val league = it.toObject(League::class.java)
                         league?.id = it.id
                         league
-                    }.filterNotNull())
+                    })
                 }
             }
     }
@@ -106,15 +108,13 @@ class Firestore {
     }
 
     fun addPlayerToLeague(
-        playerID: String,
-        playerName: String?,
+        playerLeague: PlayerLeague,
         leagueID: String,
         listener: (Boolean) -> Unit
     ) {
         getLeague(leagueID) { leagueNullable ->
             leagueNullable?.let { league ->
-                val playerLeague = PlayerLeague(playerID, playerName.orEmpty())
-                league.players.add(playerID)
+                league.players.add(playerLeague.id)
                 league.playersInfo.add(playerLeague)
                 db.collection(LEAGUES_COLLECTION).document(league.id.orEmpty())
                     .set(league)

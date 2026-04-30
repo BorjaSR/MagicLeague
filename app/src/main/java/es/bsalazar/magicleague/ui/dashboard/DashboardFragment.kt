@@ -1,7 +1,5 @@
 package es.bsalazar.magicleague.ui.dashboard
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +12,6 @@ import es.bsalazar.magicleague.R
 import es.bsalazar.magicleague.data.SharedPreferences
 import es.bsalazar.magicleague.models.League
 import es.bsalazar.magicleague.models.PlayerLeague
-import es.bsalazar.magicleague.utils.Constants
 
 
 class DashboardFragment : Fragment() {
@@ -62,8 +59,10 @@ class DashboardFragment : Fragment() {
                 context?.let {
                     viewModel.joinToLeague(
                         leagueId,
-                        SharedPreferences.getInstance(it).getUserID(),
-                        SharedPreferences.getInstance(it).getUserName().orEmpty()
+                        PlayerLeague(
+                            id = SharedPreferences.getInstance(it).getUserID(),
+                            name = SharedPreferences.getInstance(it).getUserName().orEmpty()
+                        )
                     )
                 }
             }).show(childFragmentManager, "JOIN")

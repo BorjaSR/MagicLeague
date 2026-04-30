@@ -15,8 +15,8 @@ class MatchesCreator {
                     if (secondIndex > firstIndex) {
                         matches.add(
                             Match(
-                                MatchPlayer(firstPlayerLeague.id, firstPlayerLeague.Name, 20),
-                                MatchPlayer(secondPlayerLeague.id, secondPlayerLeague.Name, 20)
+                                MatchPlayer(firstPlayerLeague.id, firstPlayerLeague.name, 20),
+                                MatchPlayer(secondPlayerLeague.id, secondPlayerLeague.name, 20)
                             )
                         )
                     }

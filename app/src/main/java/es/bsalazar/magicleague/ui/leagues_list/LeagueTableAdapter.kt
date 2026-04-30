@@ -20,10 +20,10 @@ class LeagueTableAdapter(val players : List<PlayerLeague>) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: LeagueTableViewHolder, position: Int) {
         val player = players[position]
         with(holder){
-            playerName.text = player.Name
-            playerWins.text = player.Wins.toString()
-            playerDefeats.text = player.Defeats.toString()
-            playerLifeGap.text = player.LifeGap.toString()
+            playerName.text = player.name
+            playerWins.text = player.wins.toString()
+            playerDefeats.text = player.defeats.toString()
+            playerLifeGap.text = player.lifeGap.toString()
         }
     }
 }

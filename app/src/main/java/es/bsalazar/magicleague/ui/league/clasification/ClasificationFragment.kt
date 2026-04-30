@@ -44,7 +44,7 @@ class ClasificationFragment : Fragment() {
 
     private fun setObservers() {
         leagueViewModel.league.observe(requireActivity(), Observer { league ->
-            recyclerView.adapter = LeagueTableAdapter(league.playersInfo.sortedByDescending { it.Points })
+            recyclerView.adapter = LeagueTableAdapter(league.playersInfo.sortedByDescending { it.points })
         })
     }
 }
