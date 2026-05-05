@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import es.bsalazar.magicleague.ui.navigation.BottomNavigationWrapper
 import es.bsalazar.magicleague.ui.theme.MagicLeagueTheme
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Light mode")
@@ -20,7 +21,7 @@ fun PreviewDashboardScreen() {
 }
 
 @Composable
-fun DashboardScreen() {
+fun DashboardScreen(navigationToLeague: (String) -> Unit = {}) {
 
     val navController: NavHostController = rememberNavController()
 
@@ -32,6 +33,10 @@ fun DashboardScreen() {
             }
         }
     ) { contentPadding ->
-        BottomNavigationWrapper(navController, Modifier.padding(contentPadding))
+        BottomNavigationWrapper(
+            navController,
+            Modifier.padding(contentPadding),
+            navigationToLeague
+        )
     }
 }

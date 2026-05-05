@@ -55,7 +55,7 @@ private fun PreviewLeagueItem() {
 @Composable
 fun LeaguesScreen(
     leaguesViewModel: LeaguesViewModel = hiltViewModel(),
-    navigateToLeagueDetail: () -> Unit = {}
+    navigateToLeagueDetail: (String) -> Unit = {}
 ) {
 
     val leaguesUiState = leaguesViewModel.uiState.collectAsStateWithLifecycle()
@@ -70,7 +70,7 @@ fun LeaguesScreen(
     ) {
         items(leaguesUiState.value.leagues.size) { index ->
             LeagueItem(leaguesUiState.value.leagues[index]) {
-
+                navigateToLeagueDetail(leaguesUiState.value.leagues[index].id.orEmpty())
             }
         }
     }

@@ -1,5 +1,8 @@
 package es.bsalazar.magicleague.ui.components
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.graphics.Shape
@@ -15,6 +18,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import es.bsalazar.magicleague.ui.theme.MagicLeagueTheme
 import java.util.Locale
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.unit.Dp
+import es.bsalazar.magicleague.ui.theme.Teal200
 
 
 @Preview(showBackground = true)
@@ -36,7 +45,7 @@ fun MagicLeaguePrimaryButtonPreview() {
                 text = "Boton Primario",
                 enabled = enabled
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            MagicSeparator(verticalPadding = 16.dp)
             MagicLeagueSecondaryButton(
                 text = "Boton Secundario",
                 enabled = enabled
@@ -48,20 +57,25 @@ fun MagicLeaguePrimaryButtonPreview() {
 @Composable
 fun MagicLeaguePrimaryButton(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit = {},
     enabled: Boolean = true,
     textColor: Color = MaterialTheme.colorScheme.onPrimary,
     text: String,
-    shape: Shape = ButtonDefaults.shape
+    shape: Shape = ButtonDefaults.shape,
+    onClick: () -> Unit = {}
 ) {
+    val animateStateButtonColor = animateColorAsState(
+        targetValue = if (enabled) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.inversePrimary,
+        animationSpec = tween(150, 0, LinearEasing)
+    )
+
     Button(
         modifier = modifier
             .fillMaxWidth()
             .height(50.dp),
         enabled = enabled,
         colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-            disabledContainerColor = MaterialTheme.colorScheme.inversePrimary
+            containerColor = animateStateButtonColor.value,
+            disabledContainerColor = animateStateButtonColor.value
         ),
         onClick = { onClick() },
         shape = shape,
@@ -81,7 +95,7 @@ fun MagicLeaguePrimaryButton(
 fun MagicLeagueSecondaryButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
-    enabled: Boolean = false,
+    enabled: Boolean = true,
     textColor: Color = MaterialTheme.colorScheme.primary,
     text: String,
 ) {
@@ -121,9 +135,10 @@ fun MagicLeagueSecondaryButton(
 }
 
 @Composable
-fun MagicSeparator(enable: Boolean) {
+fun MagicSeparator(verticalPadding: Dp = 0.dp, horizontalPadding: Dp = 0.dp, enable: Boolean = true) {
     Box(
         modifier = Modifier
+            .padding(vertical = verticalPadding, horizontal = horizontalPadding)
             .height(1.dp)
             .fillMaxWidth()
             .background(

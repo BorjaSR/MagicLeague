@@ -79,6 +79,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation)
     implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui)
     ksp(libs.hilt.compiler)
 
     testImplementation(libs.junit)

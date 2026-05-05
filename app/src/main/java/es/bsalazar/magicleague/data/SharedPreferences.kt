@@ -60,9 +60,11 @@ class SharedPreferences(val context: Context) {
 
     fun removeDeck(deck: Deck): Boolean {
         val userDecks = getUserDecks()
-        for (userDeck in userDecks){
-            if(userDeck.name == deck.name)
+        for (userDeck in userDecks) {
+            if(userDeck.name == deck.name) {
                 userDecks.remove(userDeck)
+                break
+            }
         }
 
         return sharedPreferences.edit()

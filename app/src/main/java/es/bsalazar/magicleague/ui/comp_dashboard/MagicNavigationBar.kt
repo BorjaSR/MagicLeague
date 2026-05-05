@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -20,6 +21,7 @@ import es.bsalazar.magicleague.R
 import es.bsalazar.magicleague.ui.navigation.Dashboard
 import es.bsalazar.magicleague.ui.navigation.Leagues
 import es.bsalazar.magicleague.ui.navigation.Profile
+import es.bsalazar.magicleague.ui.theme.MagicLeagueTheme
 
 data class NavItem(
     val route: Any,
@@ -30,14 +32,14 @@ data class NavItem(
 @Preview(showBackground = true)
 @Composable
 fun PreviewMagicNavigationBar() {
-    MagicNavigationBar {
-
+    MagicLeagueTheme {
+        MagicNavigationBar()
     }
 }
 
 @Composable
 fun MagicNavigationBar(onNavItemClick: (NavItem) -> Unit = {}) {
-    var selectedIndex by remember { mutableIntStateOf(0) }
+    var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
 
     val navItemList = listOf(
         NavItem(
@@ -58,7 +60,7 @@ fun MagicNavigationBar(onNavItemClick: (NavItem) -> Unit = {}) {
     )
 
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.surface
+        containerColor = MaterialTheme.colorScheme.surfaceVariant
     ) {
         navItemList.forEachIndexed { index, item ->
             MyNavigationItem(

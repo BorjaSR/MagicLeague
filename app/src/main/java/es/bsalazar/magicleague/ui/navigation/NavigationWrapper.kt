@@ -6,16 +6,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import es.bsalazar.magicleague.ui.comp_dashboard.DashboardScreen
+import es.bsalazar.magicleague.ui.comp_league.LeagueScreen
 
 @Composable
 fun NavigationWrapper() {
     val navController: NavHostController = rememberNavController()
     NavHost(navController = navController, startDestination = DashboardScreen) {
         composable<DashboardScreen> {
-            DashboardScreen()
+            DashboardScreen(navigationToLeague = { leagueId ->
+                navController.navigate(League)
+            })
         }
         composable<League> {
-
+            LeagueScreen()
         }
     }
 }
