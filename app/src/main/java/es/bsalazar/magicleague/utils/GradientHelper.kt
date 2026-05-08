@@ -42,6 +42,7 @@ fun createBrushForDeckList(
     startOffset: Float = 0f,
     endOffset: Float = 0f
 ): Brush {
+    if (colorList.isEmpty()) return Brush.horizontalGradient(colors = listOf(Translucent, Translucent))
     if (colorList.size == 1) colorList.add(colorList[0])
 
     val finalColors = colorList.map { it.getColor() }.toMutableList()

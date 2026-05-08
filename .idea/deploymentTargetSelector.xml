@@ -3,11 +3,11 @@
   <component name="deploymentTargetSelector">
     <selectionStates>
       <SelectionState runConfigName="app">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2026-04-22T09:07:43.976695Z">
+        <option name="selectionMode" value="DIALOG" />
+        <DropdownSelection timestamp="2026-05-08T11:46:43.774087Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/borjasalazarrey/.android/avd/Pixel_8_API_33.avd" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=5HKNH6MJCYVWHMOF" />
             </handle>
           </Target>
         </DropdownSelection>
@@ -99,6 +99,30 @@
         </DialogSelection>
       </SelectionState>
       <SelectionState runConfigName="DeckDropdownItem">
+        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2026-04-22T09:07:43.976695Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/borjasalazarrey/.android/avd/Pixel_8_API_33.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection>
+          <targets>
+            <Target type="DEFAULT_BOOT">
+              <handle>
+                <DeviceId pluginId="PhysicalDevice" identifier="serial=5HKNH6MJCYVWHMOF" />
+              </handle>
+            </Target>
+            <Target type="DEFAULT_BOOT">
+              <handle>
+                <DeviceId pluginId="LocalEmulator" identifier="path=/Users/borjasalazarrey/.android/avd/Pixel_8_API_33.avd" />
+              </handle>
+            </Target>
+          </targets>
+        </DialogSelection>
+      </SelectionState>
+      <SelectionState runConfigName="LeagueTopBarPreview">
         <option name="selectionMode" value="DROPDOWN" />
         <DropdownSelection timestamp="2026-04-22T09:07:43.976695Z">
           <Target type="DEFAULT_BOOT">

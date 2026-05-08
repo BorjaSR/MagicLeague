@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 object DashboardScreen
 
 @Serializable
-object League
+data class League(val id: String)
 
 @Serializable
 object Leagues

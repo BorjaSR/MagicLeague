@@ -23,7 +23,7 @@
     <string name="state_league_in_progress">En progreso</string>
     <string name="state_league_finished">Terminada</string>
     <string name="start_league">Comenzar liga</string>
-    <string name="laps_number_text">Numero de vueltas:</string>
+    <string name="laps_number_text">Numero de vueltas</string>
     <string name="tab_configuration">Organización</string>
     <string name="league_name">Nombre de la liga</string>
     <string name="save_changes">Guardar cambios</string>
@@ -54,4 +54,6 @@
     <string name="delete_dialog_description">¿Seguro que quieres eliminar el mazo?</string>
     <string name="delete">Eliminar</string>
     <string name="cancel">Cancelar</string>
+    <string name="league_code_copied">Codigo de liga copiado</string>
+    <string name="player">Jugador</string>
 </resources>

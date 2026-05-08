@@ -30,7 +30,6 @@ import es.bsalazar.magicleague.ui.theme.MagicLeagueTheme
 import java.util.Locale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.Dp
-import es.bsalazar.magicleague.ui.theme.Teal200
 
 
 @Preview(showBackground = true)
